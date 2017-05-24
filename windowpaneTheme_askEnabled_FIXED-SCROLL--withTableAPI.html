@@ -1,0 +1,483 @@
+﻿<!DOCTYPE html>
+<html>
+    
+    <head>
+        
+        <meta name="color:Background" content=rgba(0,0,0,0.6) />
+        <meta name="font:Body" content= "Courier" />
+        <meta name="image:Background" content="http://themes.googleusercontent.com/image?id=1iJBX-a-hBX2tKaDdERpElPUmvb4r5MDX9lEx06AA-UtZIQCYziZg3PFbmOyt-g2sH8Jo" />
+        
+        <meta name="color:Primary Colour" content=rgb(255,255,255) /> <!-- white title text -->
+        <meta name="color:Secondary Colour" content=rgb(255,153,5) /> <!-- orange -->
+        <meta name="color:Text Colour" content=rgb(204,194,166) /> <!-- grey ish -->
+        
+        <!-- Any image you want -->
+        <meta name="image:Sidebar" content="https://drive.google.com/uc?export=download&id=0Bx33pcwPAtzUcjM1UEl3NjhKcDQ" />
+        
+        <meta name="if:Infinite Scroll" content="0">
+        <!--<meta name="link:Email" content="mailto:pyritefishes@gmail.com"/>-->
+       
+        <!-- THINGS TO GO IN TAB -->
+        <title>{Title}{block:PostSummary}: {PostSummary}{/block:PostSummary}</title>
+        {block:Description}<meta name="description" content="{MetaDescription}"/>{/block:Description}
+        <link rel="shortcut icon" href= "https://drive.google.com/uc?export=download&id=0B6j-D2dBC0GfQ01SS3ZCOXpTWm8"/> <!-- The tumblr icon, or something. Default is {Favicon}-->
+        
+        <style type="text/css">
+            
+            header{
+                width: auto;/*1140px; /* = content width (800) - 2*text padding (15)*/
+                min-width: 860px;
+                max-width: 1140px;
+                background-color: rgba(0,0,0,0.6); /* for some reason {color:Background Colour} doesn't work*/
+                margin: 0px 300px 0px 60px;
+                padding: 0px 0;
+                
+                    font-family: courier;
+                    font-weight: bold;
+                    font-size: 40px;
+                    text-align: left;
+                    padding: 30px;
+            }
+            header a{
+                text-decoration: none;
+                color: {color:Primary Colour};
+            }
+            header a:hover{
+                color: {color:Secondary Colour};
+            }
+            footer{
+                width: auto;
+                max-width: 1130px;
+                min-width: 850px;
+                background-color: rgba(0,0,0,0.6); /* for some reason {color:Background Colour} doesn't work*/
+                margin: 0px 300px 0px 60px;
+                padding: 0px 0;
+                    
+                    color: {color:Secondary Colour};
+                    font-family: {font:Body};
+                    font-size: 12px;
+                    text-align: left;
+                    padding: 35px;
+            }
+            footer a{
+                text-decoration: none;
+                color: {color:Primary Colour};
+            }
+            footer a:hover{
+                color: {color:Text Colour};
+            }
+            
+            body{
+                margin: 0;
+                word-wrap: break-word;
+                
+                font-family: {font:Body};
+                background-image: url({image:Background});
+                background-size: cover; /*makes image stretch*/
+                background-attachment: fixed;
+            }
+
+            #sidebar{
+                background-color: rgba(255,255,255,0.1); /* for some reason {color:Background Colour} doesn't work*/
+                width: 300px;
+                position: fixed; /*fixed;*/ /* Use fixed unless your photo is too huge*/
+                right: 320px;
+                top: 0px;
+                /*transform: translateY(-10%);
+                /*margin-left: 900px;
+                /*top: 0px;*/
+                /*left: 900px; /*content width (800) + padding (60)= 860 */
+                /*bottom: 0px;*/
+                /*right: 50px;*/
+
+            }
+                #sidebar .title{
+                    font-family: courier;
+                    font-weight: bold;
+                    font-size: 36px;
+                    text-align: right;
+                    padding: 15px;
+                }
+                #sidebar .title a{
+                    color: {color:Primary Colour};
+                    text-decoration: none;
+                }
+                #sidebar .title a:hover { /* changes colour when hovering over link*/
+                     color: {color:Secondary Colour};
+                }
+                #sidebar .description{
+                    color: {color:Secondary Colour};
+                    font-size: 16px;
+                    text-align: right;
+                    padding: 10px;
+                    line-height: 100%; /* up to 130% of font size */
+                }
+                #sidebar .description a{
+                    color:{color:Primary Colour};
+                    text-decoration: none;
+                }
+                #sidebar .description a:hover{ /* changes colour when hovering over link*/
+                    color: {color:Secondary Colour}
+                }
+                #sidebar .links{
+                    /*background-color: {color:Primary Colour};*/
+                    color: {color:Primary Colour};
+                    font-size: 12px;
+                    text-align: right;
+                    padding: 3px 5px;
+                    margin: 3px;
+                    float: bottom;
+                    /*width: 110px;*/
+                }
+                #sidebar .links a{
+                    color: {color:Primary Colour};
+                    text-decoration: none;
+                }
+                #sidebar .links:hover{
+                    background-color: rgba(255,255,255,0.2);/*{color:Secondary Colour};*/
+                }
+                #sidebar .image{
+                    width: 270px;
+                    height: auto;
+                    padding: 15px;
+                    margin: 30px 0 0 0;
+                    
+                }
+                #sidebar .pagination{
+                    width: 300px;
+                    text-align: center;
+                    padding: 3px 5px 3px 5px;
+                }
+                #sidebar .pagination a{
+                    color: {color:Primary Colour};
+                    text-decoration: none;
+                }
+                #sidebar .pagination a:hover{
+                    color: {color:Secondary Colour};
+                }
+                /*
+                .sidebar{
+                    display: inline-block;
+                }
+                .sidebar:before{
+                    content:'';
+                    width: 10%;
+                    min-width: 100px;
+                    max-width: 200px;
+                    display: inline-block;
+                }
+                */
+            /* MAIN CONTENT */    
+            #content{
+                width: auto;/* 1200px;*/
+                min-width: 920px;
+                max-width: 1200px;
+                background-color: rgba(0,0,0,0.6); /* The grey box */
+                margin: 0px 300px 0px 60px;
+                padding: 20px 0px;
+                color: {color:Text Colour}; /* Text colour! rgba(28,28,28);*/
+            }
+                #content a{
+                    text-decoration: none;
+                    color: rgb(255,255,255);/*{color:Primary Color};*/
+                }
+                #content a:hover{
+                    color: {color:Secondary Colour};
+                }
+                #content blockquote{
+                    border-left: solid 2px {color:Primary Colour};    
+                    margin: 0;
+                    padding-left: 10px;
+                }
+                #content #posts{
+                    background-color: rgb(28,28,28);
+                    width: auto;
+                    max-width: 750px;
+                    margin: 25px 350px 50px 25px;
+                    /*margin: 0 auto 20px;*/
+                    padding: 10px;
+                }
+                    #content #posts .title{
+                        color: {color:Secondary Colour};
+                        font-size: 20px;
+                    }
+                    #content #posts .title a{
+                        text-decoration: none;
+                        color: {color:Secondary Colour};
+                    }
+                    #content #posts .title a:hover{
+                        color: {color:Primary Colour};
+                    }
+                    #content #posts .text{
+                        font-size: 14px;
+                    }
+                    
+                #content #posts #permalink{
+                    font-size: 11px;
+                    margin-top: 10px;
+                }
+                
+                #content #posts #tags{
+                    font-size: 10px;
+                }
+                    #content #posts #tags .comma:last-child{
+                        display: none;
+                    }
+                    
+                #content #notecontainer{
+                    /*margin: 20px auto;*/
+                    width: 500px;
+                    font-size: 12px;
+                    text-align: left;
+                    padding: 0px 30px 0px;
+                }
+                #content #notecontainer ol.notes{
+                    list-style-type: none;
+                    margin: 0;
+                    padding: 0;
+                }
+                #content #notecontainer img.avatar{
+                    margin-right: 9px;
+                    width: 16px;
+                    height: 16px;
+                }
+                    
+            img{
+                border: 0;
+                max-width: 100%;
+            }
+            
+            @media(max-width: 1295px){ /* What to do when less than 1485 across */
+                #sidebar{
+                    position: absolute; /*fixed*/
+                    left: 655px; /*DO NOT TOUCHHHH nor 1295*/
+                }
+            }
+            @media(min-width: 1560px){ /* Do this if larger */
+                #sidebar{
+                    position: fixed;
+                    left: 925px; /*DO NOT TOUCHHHH*/
+                }
+                
+            }
+            
+            /*shit for the about page
+            picture{
+                margin: 25px 350px 50px 25px;
+                padding: 10px;
+            }
+            text{
+                left:600px;
+            }*/
+            
+            /*TABLE SHIT THAT ONLY WORKS IF IT'S CALLED 'TABLE'*/
+            #desc {
+                font-family: {font:Body};/*"Trebuchet MS", Arial, Helvetica, sans-serif;*/
+                border-collapse: collapse;
+                width: 100%;
+            }
+            
+                #desc td, #desc th {
+                    border: 1px solid rgb(28,28,28);
+                    padding: 8px;
+                }
+                #desc td {
+                    padding-top: 12px;
+                    padding-bottom: 12px;
+                    text-align: right;
+                    background-color: rgb(28,28,28);
+                    color: rgb(204,194,166);
+                }
+                                    
+            /*#wholepage {
+                white-space: nowrap;
+            }*/
+            
+            {CustomCSS}
+                
+        </style>
+    </head>
+    
+    
+    <body>
+        
+        <header>
+            <div class="container">
+                
+                <a href="{BlogURL}">{Title}</a>
+  
+            </div>
+        </header>
+        
+        <!--<div id="wholepage">-->
+        
+        <div id="sidebar">
+            
+            <!--<div class="title"><a href="/">{Title}</a></div> <!-- "/" in URL takes you to homepage -->
+            <!--<img class="avatar" src="{PortraitURL-128}">-->
+            
+            <a href="/"><img class="image" src= "{image:Sidebar}" /></a>
+            <div class="description">{Description}</div>        
+            
+            <!-- div class="links" went inside!-->        <!-- I've replaced "/ask" with "/contact". To remove duplicate, de-select 'show link' button for /contact-->       
+            {block:AskEnabled}<a href="/contact"><div class="links">{AskLabel}</div></a>{/block:AskEnabled}
+            {block:SubmissionsEnabled}<a href="/submit"><div class="links">{SubmitLabel}</div></a>{/block:SubmissionsEnabled}
+            {block:HasPages}{block:Pages}<a href="{url}"><div class="links">{Label}</div></a>{/block:Pages}{/block:HasPages}
+            
+            <!-- Fucking Pagination -->
+            {block:IfNotInfiniteScroll}
+                <div class="pagination">
+                    {block:PreviousPage}<a href="{PreviousPage}">←</a>{/block:PreviousPage}
+                    
+                    {block:JumpPagination length="3"} <!-- If this still fucks up, DELETE THE ENTIRE SECTION UNTIL ... -->
+                        {block:CurrentPage}
+                              <span class="current_page">{PageNumber}</span>
+                        {/block:CurrentPage}
+            
+                        {block:JumpPage}
+                              <a class="jump_page" href="{URL}">{PageNumber}</a>
+                        {/block:JumpPage}
+                    {/block:JumpPagination} <!-- ...HERE! -->
+                    
+                    {block:NextPage}<a href="{NextPage}">→</a>{/block:NextPage}
+                </div>
+            {/block:IfNotInfiniteScroll}
+        </div>   
+        
+        <div id="content">
+        
+            <div class="autopagerize_page_element">
+            
+                {block:Posts}
+                    <div id="posts">
+                        
+                        <!-- THIS IS COPY PASTE, FIX THIS SHITTT -->
+                        {block:Photo}
+                            {LinkOpenTag}<img src="{PhotoURL-500}" />{LinkCloseTag}
+                            {block:Caption}<div class="text">{Caption}</div>{/block:Caption}
+                        {/block:Photo}
+                         
+                        {block:Photoset}
+                            {Photoset-500}
+                            {block:Caption}<div class="text">{Caption}</div>{/block:Caption}
+                        {/block:Photoset}
+                         
+                        {block:Video}
+                            {Video-500}
+                            {block:Caption}<div class="text">{Caption}</div>{/block:Caption}
+                        {/block:Video}
+                         
+                        {block:Audio}
+                            {AudioPlayerBlack}
+                            <div class="text">~ {PlayCountWithLabel}</div>
+                            {block:Caption}<div class="text">{Caption}</div>{/block:Caption}
+                        {/block:Audio}
+                         
+                        {block:Quote}
+                            <div class="title">“{Quote}”</div>
+                            {block:Source}<div class="text"><br>– {Source}</div>{/block:Source}
+                        {/block:Quote}
+                         
+                        {block:Text}
+                            {block:Title}<div class="title">{Title}</div>{/block:Title}
+                            <div class="text">{Body}</div>
+                        {/block:Text}
+                         
+                        {block:Answer}
+                            <div class="title">{Question}</div>
+                            <div class="text">– {Asker}</div>
+                            <div class="text">{Answer}</div>
+                        {/block:Answer}
+                         
+                        {block:Chat}
+                            {block:Title}<div class="title">{Title}</div>{/block:Title}
+                            <div class="text">
+                            {block:Lines}
+                                {block:Label}<strong>{Label}</strong>{/block:Label} {Line}<br />
+                            {/block:Lines}
+                            </div> <!--text-->
+                        {/block:Chat}
+                         
+                        {block:Link}
+                            <div class="title"><a href="{URL}">{Name}</a></div>
+                            {block:Description}
+                            <div class="text">{Description}</div>
+                            {/block:Description}
+                        {/block:Link}
+                        <!-- UNTIL HERE -->
+                        
+                        <div id="permalink">
+                            <a href="{Permalink}">
+                                {block:Date}Posted {Year}-{MonthNumberWithZero}-{DayOfMonthWithZero}{/block:Date}
+                                {block:NoteCount} with {NoteCountWithLabel}{/block:NoteCount}
+                            </a>
+                        </div>
+                        
+                        {block:HasTags}
+                            <div id="tags">
+                                {block:Tags}<a href="{TagURL}">{Tag}</a><span class="comma">, </span>{/block:Tags}.
+                            </div>
+                        {/block:HasTags}
+                        
+                    </div> <!-- posts -->
+                    
+                    {block:PostNotes}
+                        <div id="notecontainer">{PostNotes}</div>
+                    {/block:PostNotes}
+                    
+                    
+                {/block:Posts}
+                
+            </div> <!-- AUTOPAGERIZE -->
+
+        </div> <!-- content -->
+       
+        <footer>
+            <p>© {CopyrightYears} <a href="/">pyritefish (the-elusive-pyritefish)</a></p>
+            <p>Contact information: <a href="mailto:pyritefishes@gmail.com">
+            pyritefishes@gmail.com</a>.</p>
+        </footer>
+        
+        <!--</div> <!-- WHOLEPAGE-->
+        
+        <script src="https://ajax.googleapis.com/ajax/libs/jquery/1.9.0/jquery.min.js" type="text/javascript"></script>
+        <script type="text/javascript" src="https://cdn.rawgit.com/bigspotteddog/ScrollToFixed/master/jquery-scrolltofixed.js"></script> <!-- MAGIC! -->
+        <!-- see https://bigspotteddog.github.io/ScrollToFixed/ for more information -->
+            
+        <script>  
+        
+            $(document).ready(function() {
+
+                // Dock the header to the top of the window when scrolled past the banner. This is the default behavior.
+                $('#sidebar').scrollToFixed();
+            });
+
+        </script>
+
+    </body>
+    
+    
+</html>
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
